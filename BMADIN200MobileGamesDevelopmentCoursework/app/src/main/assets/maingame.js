@@ -14,7 +14,7 @@ var elapsed;
 var gameStates = 0;
 var lastClick = 0;
 
-var soundManager;
+var soundManager; //////////////////////FIX SCALING U CUNT BAG FUCKER SHITE FACE BITCH
 
 function load()
 {
@@ -30,9 +30,14 @@ function load()
 
     _CanvasClass.CanvasLoad();
 
-    window.addEventListener("mousemove", _PlayerMovementClass.MousePositions);
+    window.addEventListener("mousemove", _PlayerMovementClass.MousePositions, false);
     window.addEventListener("mousedown", MouseDown, false);
-    window.addEventListener("click", click, true);
+    window.addEventListener("click", windowClick, false);
+
+    canvas.addEventListener("touchstart", click, false);
+    canvas.addEventListener("touchmove", _PlayerMovementClass.MousePositions, false);
+    canvas.addEventListener("touchend", MouseDown, false);
+    
 
     init();
     gameLoop();
@@ -42,7 +47,7 @@ function init()
 {
     if(soundManager != null)
     {
-        soundManager.playMusic(0);
+        soundManager.playMusic(1);
     }
 
     _CanvasClass.ResizeCanvas();
@@ -56,7 +61,6 @@ function init()
 
 function gameLoop()
 {
-
     elapsed = (Date.now() - startTimeMS)/1000;
     _SpriteClass.BackgroundScroll();
     switch(gameStates)
@@ -66,12 +70,12 @@ function gameLoop()
         //Start Screen
         _SpriteClass.RenderStartGame();
         break;
-        case 1:
+        case 1:    
         //Main Game
         lastClick.x = 0; lastClick.y = 0;
         _SpriteClass.RenderMainGame();
         _PlayerScoreClass.UpdateScore(elapsed);
-        _EnemyMovementClass.Movement();
+        _EnemyMovementClass.Movement();    
         _PlayerCollisionClass.PlayerCollisions();
         break;
         case 2:
@@ -86,10 +90,19 @@ function gameLoop()
     requestAnimationFrame(gameLoop);
 }
 
-function click(e)
+function windowClick(e)
 {
     e.preventDefault();
     lastClick = {x:e.clientX, y:e.clientY};
+}
+
+function click(e)
+{
+    e.preventDefault();
+    var touchX = e.touches[0].pageX - canvas.offsetLeft;
+    var touchY = e.touches[0].pageY - canvas.offsetTop;
+
+   lastClick = {x:e.touches[0].pageX,y:e.touches[0].pageY};
 }
 
 function MouseDown(e)

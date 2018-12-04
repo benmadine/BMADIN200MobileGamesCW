@@ -9,6 +9,7 @@ class CollisionDectionClass
                 lastClick.y < playButton.sImage.height + playButton.y &&
                 lastClick.y > playButton.y)
             {
+                //soundManager.playSound(1);
                 gameStates = 1;
             }
         }
@@ -19,6 +20,7 @@ class CollisionDectionClass
                 lastClick.y < playAgainButton.sImage.height + playAgainButton.y &&
                 lastClick.y > playAgainButton.y)
             {
+              //  soundManager.playSound(1);
                 window.location.reload(false);
             }
         }
@@ -27,7 +29,8 @@ class CollisionDectionClass
             lastClick.y < exitGameButton.sImage.height + exitGameButton.y &&
             lastClick.y > exitGameButton.y)
         {
-            console.log("Quit Game");
+      //      soundManager.playSound(1);
+            window.close();
         }
     }
 }

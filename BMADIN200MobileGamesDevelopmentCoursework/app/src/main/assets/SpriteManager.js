@@ -26,9 +26,9 @@ class SpriteClass
     SpriteAssign()
     {
         menuBackgroundImage = new SpriteClass(0,0, "MenuBackgroundImage.png");
-        playButton = new SpriteClass(canvas.width / 8, canvas.height / 1.2, "PlayButton.png");
-        exitGameButton = new SpriteClass(canvas.width / 3, canvas.height / 1.2, "ExitGameButton.png");
-        playAgainButton = new SpriteClass(canvas.width / 8, canvas.height / 1.2, "PlayAgain.png");
+        playButton = new SpriteClass(canvas.width/2, canvas.height/6, "PlayButton.png");
+        exitGameButton = new SpriteClass(canvas.width/2, canvas.height/1, "ExitGameButton.png");
+        playAgainButton = new SpriteClass(canvas.width/2, canvas.height/6, "PlayAgain.png");
         backgroundImage = new SpriteClass(0,0, "SpaceBackground.jpg");
         playerImage = new SpriteClass(0, 0, "Spaceship.png");
     }
@@ -59,7 +59,7 @@ class SpriteClass
         canvasContext.save();
         canvasContext.translate(-delta, 0);
         canvasContext.drawImage(this.sImage, this.x, 0, canvas.width, canvas.height);
-        canvasContext.drawImage(this.sImage, this.sImage.width, 0, canvas.width, canvas.height);
+        canvasContext.drawImage(this.sImage, this.sImage.width - 300, 0, canvas.width, canvas.height);
         canvasContext.restore();
     }
 
@@ -75,7 +75,8 @@ class SpriteClass
     ButtonRender()
     {
         canvasContext.save();
-        canvasContext.scale(_CanvasClass.getCanvasWidth * 0.5 , _CanvasClass.getCanvasHeight * 0.5);
+        canvasContext.scale(0.5, 0.5);
+        canvasContext.translate(this.x, this.y );
         canvasContext.drawImage(this.sImage, this.x, this.y);
         canvasContext.restore();
     }
@@ -83,15 +84,22 @@ class SpriteClass
     MissleRender()
     {
         canvasContext.save();
-        canvasContext.scale(_CanvasClass.getCanvasWidth * 0.5 , _CanvasClass.getCanvasHeight * 0.5);
+        
+        canvasContext.scale(0.2 , 0.2);
+        canvasContext.translate(this.x, this.y);
         canvasContext.drawImage(this.sImage, this.x, this.y);
         canvasContext.restore();
     }
 
     PlayerRender()
     {
+        var currentWidth = playerImage.width;
+        var currentHeight = playerImage.height;
+
         canvasContext.save();
-        canvasContext.scale(_CanvasClass.getCanvasWidth * 0.05, _CanvasClass.getCanvasHeight * 0.05);
+        
+        canvasContext.scale(0.2, 0.2);
+        canvasContext.translate(this.x, this.y);
         canvasContext.drawImage(this.sImage, this.x, this.y);
         canvasContext.restore();
     }
@@ -99,8 +107,7 @@ class SpriteClass
     HeartRender()
     {
         canvasContext.save();
-        canvasContext.scale(_CanvasClass.getCanvasWidth * 0.05, _CanvasClass.getCanvasHeight * 0.05);
-        console.log(canvasContext.scale(_CanvasClass.getCanvasWidth * 0.05, _CanvasClass.getCanvasHeight * 0.05));
+        canvasContext.scale(0.05, 0.05);
         canvasContext.drawImage(this.sImage, this.x, this.y);
         canvasContext.restore();
     }
@@ -108,19 +115,19 @@ class SpriteClass
     StartTextRender()
     {
         canvasContext.save();
-        canvasContext.scale(_CanvasClass.getCanvasWidth * 0.5, _CanvasClass.getCanvasHeight * 0.5);
+        canvasContext.scale(0.3, 0.3);
         canvasContext.fillStyle = 'white';
         canvasContext.font = 'bold 50px Open Sans';
         canvasContext.fillText("ALIEN ROCKET DODGER", 100, 200);
-        canvasContext.fillText("Dodge Rockets!!", 100, 500);
-        canvasContext.fillText("Alien Moves With Finger!!", 100, 800);
+        canvasContext.fillText("Dodge Rockets!!", 100, 400);
+        canvasContext.fillText("Alien Moves With Finger!!", 100, 600);
         canvasContext.restore();
     }
 
     EndTextRender()
     {
         canvasContext.save();
-        canvasContext.scale(_CanvasClass.getCanvasWidth * 0.5, _CanvasClass.getCanvasHeight * 0.5);
+        canvasContext.scale(0.3, 0.3);
         canvasContext.fillStyle = _FontModifierClass.FontColour();
         canvasContext.font = 'bold ' + _FontModifierClass.FontSize(20, 200) + 'px Open Sans';
         canvasContext.fillText("Your Score Was :" + playerScore.toString().substr(0,3), 100, 200);

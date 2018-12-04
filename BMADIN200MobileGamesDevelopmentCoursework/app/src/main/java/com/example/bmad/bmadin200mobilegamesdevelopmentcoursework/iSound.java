@@ -15,8 +15,8 @@ public class iSound
 
     private Context ctx;
     private SoundPool sounds = null;
-    private int[] soundIDs = new int[2];
-    private String[] musicIDs = new String[1];
+    private int[] soundIDs = new int[3];
+    private String[] musicIDs = new String[2];
     private MediaPlayer music;
 
     iSound(final Context context)
@@ -42,12 +42,19 @@ public class iSound
             //store the id outputted by the sound pool in the sound effects array
             soundIDs[0] = sounds.load(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength(), 0);
             afd.close();
+
+            afd = ctx.getAssets().openFd("ButtonClickMusic.mp3");
+            soundIDs[1] = sounds.load(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength(), 0);
+
+            afd = ctx.getAssets().openFd("ExplosionMusic.mp3");
+            soundIDs[2] = sounds.load(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength(), 0);
         }
         catch(Exception e) {
             e.printStackTrace();
         }
 
         musicIDs[0] = "SpaceBackgroundMusic.mp3";
+        musicIDs[1] = "MainGameMusic.mp3";
 
         music = new MediaPlayer();
     }
