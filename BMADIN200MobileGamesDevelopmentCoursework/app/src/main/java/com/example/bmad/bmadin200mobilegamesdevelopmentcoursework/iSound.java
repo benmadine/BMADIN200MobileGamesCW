@@ -1,5 +1,12 @@
 package com.example.bmad.bmadin200mobilegamesdevelopmentcoursework;
 
+//
+// ────────────────────────────────────────────────────── I ──────────
+//   :::::: I M P O R T S : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────
+//
+
+
 import android.accessibilityservice.GestureDescription;
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
@@ -10,9 +17,15 @@ import android.media.SoundPool;
 import android.os.Build;
 import android.webkit.JavascriptInterface;
 
+//
+// ────────────────────────────────────────────────────────────── II ──────────
+//   :::::: S O U N D   C L A S S : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────
+//
+
+
 public class iSound
 {
-
     private Context ctx;
     private SoundPool sounds = null;
     private int[] soundIDs = new int[3];
