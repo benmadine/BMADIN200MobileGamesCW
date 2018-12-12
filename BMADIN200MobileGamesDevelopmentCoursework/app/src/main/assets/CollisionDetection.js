@@ -35,13 +35,14 @@ class CollisionDectionClass
                 lastClick.y > playAgainButton.y)
             {
                 // Sets the game state equal to 1.
-                _PlayerScoreClass.playerScore = 0;
-                gameStates = 1;
-                
+                playerScore = 0;
+               
                 // Calls the reset game function in the mainGame.js
                 ResetGame();
                 // Play the button click sounds.
-                soundManager.playSound(1);               
+                soundManager.playSound(1);
+                playerScore = 0;
+                gameStates = 1;
             }
         }
         // Collision detection, AABB.

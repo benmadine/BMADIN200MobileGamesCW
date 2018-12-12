@@ -33,6 +33,10 @@ var lastClick = 0;
 
 var soundManager; 
 
+var scoreBoolean = false;
+
+var playerScore = 0;
+
 //
 // ──────────────────────────────────────────────────────────────────────────────────────────────────────────── III ──────────
 //   :::::: T H I S   F U N C T I O N   I S   C A L L E D   O N   S T A R T U P : :  :   :    :     :        :          :
@@ -93,6 +97,7 @@ function load()
 
 function init()
 {
+    
     // Checks to see if the sound maanager isnt empty. Used so that the game will run on browser.
     if(soundManager != null)
     {
@@ -198,11 +203,12 @@ function ResetGame()
     // Sets the game state to 1, which is the main game.
     gameStates = 1;
     // Sets the players score back to zero.
-    _PlayerScoreClass.playerScore = 0;
+    playerScore = 0;
     // Sets player's health back to three
     _PlayerScoreClass.playerHealth = 3;
     // Re-renders the players health icons.
     _SpriteClass.HealthHeartAssign();
+    scoreBoolean = true;
 }
 
 //

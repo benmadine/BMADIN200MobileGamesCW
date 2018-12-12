@@ -9,7 +9,7 @@
 //
 
 
-var playerScore = 0;
+//var playerScore = 0;
 var playerHighScore = 0;
 var playerHealth = 3;
 
@@ -34,6 +34,7 @@ class PlayerScoreClass
             playerHealth = 3;
             // Changes the game state.
             gameStates = 2;
+
         }
         // If playerCollided is false.
         if(!playerCollided)
@@ -48,7 +49,8 @@ class PlayerScoreClass
             healthHearts.pop();
             // Lower the players health and score.
             playerHealth--;
-            playerScore -= 5;
+            
+            playerScore -= 10;
             // Set the playercollided to false.
             playerCollided = false;
         }

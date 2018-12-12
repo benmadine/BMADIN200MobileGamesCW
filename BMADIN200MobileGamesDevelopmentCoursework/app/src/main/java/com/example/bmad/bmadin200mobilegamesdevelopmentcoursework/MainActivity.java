@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setJavaScriptEnabled(true);
 
         webView.loadUrl("file:///android_asset/coursework.html");
         webView.addJavascriptInterface(iS, "soundManager");

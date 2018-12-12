@@ -39,8 +39,8 @@ class PlayerMoveClass
     MousePositions(event)
     {
         // For mouse movement.
-       //  xMousePosition = event.clientX;
-      // yMousePosition = event.clientY;
+        // xMousePosition = event.clientX;
+        // yMousePosition = event.clientY;
       
         // For touch input, gets the user touch position.
         xMousePosition = event.touches[0].pageX;
